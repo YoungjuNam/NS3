@@ -1,0 +1,25 @@
+MobilityHelper mobility;
+mobility.SetPositionAllocator ("ns3::IntersectionsPosition", "Num", UintegerValue (size), "Grid", UintegerValue (2), "Intersection", UintegerValue (3), "Distance", DoubleValue (1000));
+mobility.SetMobilityModel ("ns3::Intersections", "Grid", UintegerValue (2), "Intersection", UintegerValue (3), "Distance", DoubleValue (1000), "Bounds", RectangleValue (Rectangle (0, 1000*3, 0, 1000*3)), "Speed", StringValue ("ns3::ConstantRandomVariable[Constant=16.667]"), "DeltaSpeed", DoubleValue (5.556));
+mobility.Install(nodes);
+
+
+* Position Allocator
+- Num : node 개수
+- Grid : 차선 수
+- Intersection : 교차로 개수 (n x n)
+- Distance : 교차로 간의 거리
+
+* Mobility Model
+- Grid : 차선 수
+- Intersection : 교차로 개수 (n x n)
+- Distance : 교차로 간의 거리
+- Bounds : (0, distance*intersection, 0, distance*intersection)
+- Speed : const(일정한 속도) 16.667 m/s = 60 km/h
+- DeltaSpeed : 오차 속도 5.556 m/s = 10 km/h 
+		=> 속도 50~70 km/h
+
+* 주의할 점
+- Position Allocator와 Mobility Model의 속성은 같아야한다.
+ (차선 수, 교차로 개수, 교차로 간의 거리)
+- Bounds는 교차로 개수와 교차로 간의 거리의 곱으로 설정해주어야한다.

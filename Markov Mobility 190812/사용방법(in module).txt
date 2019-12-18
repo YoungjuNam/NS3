@@ -1,0 +1,17 @@
+Ptr<Intersections> Markov = m_ipv4->GetObject<Intersections>();
+Markov->GetProbability().x; // go straight
+Markov->GetProbability().y; // turn right
+Markov->GetProbability().z; // turn left
+Markov->GetDirection() 	// 0 : go straight
+			// 1 : turn right
+			// 2 : turn left
+
+Markov->GetPosition(); // position of node
+Markov->GetVelocity(); // velocity of node
+
+* 주의할점
+
+#include "ns3/mobility-module.h"
+사용할 파일 맨위에 mobility 모듈 헤더를 꼭 불러와야 함
+
+Mobility 모듈의 wscript 파일에 intersections 추가
